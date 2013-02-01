@@ -1,5 +1,3 @@
-rubygems-sha512.S3.txt contains the SHA512 checksums from rubygems.org's S3
-repository.  There are 295594 gems in this list.
 
 Using the SHA512 checksums supplied here, we have verified that all gems match
 at least one third-party mirror or excluding gems that have been yanked.
@@ -18,4 +16,46 @@ All the gems with 2 or fewer checksums are pre-release versions according to:
 
 This finds the gem version and checks it for any alphabet character.  If it
 contains any alphabet character it is a pre-release.
+
+== SHA512 checksum lists
+
+rubygems-sha512.S3.txt ::
+  Checksums from rubygems.org's S3 repository
+
+rubygems-sha512.automated_labs.txt ::
+  Automated Labs mirror checksums
+
+rubygems-sha512.bluebox.txt ::
+  Blue Box mirror checksums
+rubygems-sha512.google3rd.txt ::
+  Google third-party depot checksums
+
+rubygems-sha512.google_ghost.txt ::
+  Google "ghost" repository checksums
+
+rubygems-sha512.heroku.txt
+  Heroku application caches checksums.  This is not a mirror so there are some
+  gems from git here.
+
+rubygems-sha512.sj26.txt ::
+  The Conversation (http://theconversation.edu.au/) mirror checksum
+  provided by Samuel Cochran from 17 Nov 2012
+
+rubygems-sha512.stevenhaddox.txt ::
+  Steven Haddox's local gems checksums
+
+rubygems-sha512.swift.txt ::
+  AT&T mirror checksums from 26 Nov 2012
+
+rubygems-sha512.tao.txt ::
+  RubyGems china mirror checksums.  Contains some corrupt gems
+
+rubygems-sha512.terrcin.txt ::
+  NZ Railscamp mirror checksums provided by Nahum Wild (@terrcin)
+
+rubygems-sha512.tokyo.txt ::
+  RubyGems tokyo mirror checksums
+
+rubygems-sha512.yorickpeterse.txt ::
+  Yorick Peterse gem checksums
 
