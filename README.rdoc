@@ -1,0 +1,21 @@
+rubygems-sha512.S3.txt contains the SHA512 checksums from rubygems.org's S3
+repository.  There are 295594 gems in this list.
+
+Using the SHA512 checksums supplied here, we have verified that all gems match
+at least one third-party mirror or excluding gems that have been yanked.
+
+Gems that have been yanked are not installable with rubygems or bundler.
+
+Using rubygems_verify.rb 13689 gems were found with 2 or fewer checksums from
+third-party mirrors or caches, again excluding gems that have been yanked.
+
+These can be found in unverified.2_or_fewer_checksums.txt
+
+All the gems with 2 or fewer checksums are pre-release versions according to:
+
+  ruby -ne 'gets =~ /-(.*?)\.gem/; puts $_ unless $1 =~ /\w/' \
+    unverified.2_or_fewer_checksums.txt
+
+This finds the gem version and checks it for any alphabet character.  If it
+contains any alphabet character it is a pre-release.
+
