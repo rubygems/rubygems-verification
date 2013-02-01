@@ -59,3 +59,7 @@ rubygems-sha512.tokyo.txt ::
 rubygems-sha512.yorickpeterse.txt ::
   Yorick Peterse gem checksums
 
+== Additional scripts/tools
+
+ * Mark was using `puf(1)`, `grep(1)` and similar tools.
+ * Most of the scripts raggi used can be found in the `raggi/` subdirectory.
