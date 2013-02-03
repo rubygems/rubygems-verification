@@ -1,4 +1,3 @@
-
 Using the SHA512 checksums supplied here, we have verified that all gems match
 at least one third-party mirror or excluding gems that have been yanked.
 
@@ -27,13 +26,14 @@ rubygems-sha512.automated_labs.txt ::
 
 rubygems-sha512.bluebox.txt ::
   Blue Box mirror checksums
+
 rubygems-sha512.google3rd.txt ::
   Google third-party depot checksums
 
 rubygems-sha512.google_ghost.txt ::
   Google "ghost" repository checksums
 
-rubygems-sha512.heroku.txt
+rubygems-sha512.heroku.txt ::
   Heroku application caches checksums.  This is not a mirror so there are some
   gems from git here.
 
