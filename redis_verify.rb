@@ -44,50 +44,45 @@ redis = Redis.new
 
 redis.flushall
 
-Dir['rubygems-sha512.*'].each do |file|
-  inn, out = IO.pipe
+imports = Dir['rubygems-sha512.*'].map do |file|
+  Thread.start do
+    inn, out = IO.pipe
 
-  convert_pid = Process.spawn ruby, 'shas_to_redis_sadd.rb', file, out: out
+    convert_pid = Process.spawn ruby, 'redis_sha_import.rb', file, out: out
 
-  import_pid  = Process.spawn('redis-cli', '--pipe',
-                              in: inn, out: IO::NULL, err: IO::NULL)
+    import_pid  = Process.spawn('redis-cli', '--pipe',
+                                in: inn, out: IO::NULL, err: IO::NULL)
 
-  out.close_write
+    out.close_write
 
-  Process.waitpid convert_pid
+    Process.waitpid convert_pid
 
-  raise 'shas_to_redis_sadd.rb failed' unless $?.success?
+    raise 'shas_to_redis_sadd.rb failed' unless $?.success?
 
-  Process.waitpid import_pid
+    Process.waitpid import_pid
 
-  raise 'redis-cli insert failed' unless $?.success?
+    raise 'redis-cli insert failed' unless $?.success?
 
-  $stderr.puts "wrote #{file}"
+    $stderr.puts "wrote #{file}"
+  end
+end
+
+imports.each do |thread|
+  thread.value
 end
 
 unverified = []
 
 IO.foreach 'rubygems-sha512.S3.txt' do |line|
-  _, path = line.chomp.split /\s+/
+  sha, path = line.chomp.split /\s+/
 
   name = File.basename path
 
   next if yanked.include? name
 
-  hash_count = redis.hget('counts', name).to_i
+  hash_count = redis.hget(name, sha).to_i
 
-  case hash_count
-  when 0, 1, 2 then
-    unverified << "#{name} #{hash_count}"
-  else
-    unique_count = redis.scard(name).to_i
-
-    # 5 submitted hashes - 2 mismatches = 3 valid hashes which is OK
-    # 4 submitted hashes - 2 mismatches = 2 valid hashes which is NOT OK
-    next if hash_count - unique_count > 2
-
-    unverified << "#{name} #{hash_count} #{unique_count}"
-  end
+  unverified << "#{name} #{hash_count}" if hash_count < 3
 end
 
 puts unverified.sort

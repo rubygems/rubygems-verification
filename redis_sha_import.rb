@@ -21,7 +21,6 @@ ARGF.each_line do |line|
   name = File.basename path
 
   puts gen_redis_proto('MULTI')
-  puts gen_redis_proto('SADD', name, sha)
-  puts gen_redis_proto('HINCRBY', 'counts', name, '1')
+  puts gen_redis_proto('HINCRBY', name, sha, '1')
   puts gen_redis_proto('EXEC')
 end

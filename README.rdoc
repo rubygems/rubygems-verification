@@ -10,7 +10,7 @@ These can be found in unverified.2_or_fewer_checksums.txt
 
 All the gems with 2 or fewer checksums are pre-release versions according to:
 
-  ruby -ne 'gets =~ /-(.*?)\.gem/; puts $_ unless $1 =~ /\w/' \
+  ruby -ne 'gets =~ /-(.*?)\.gem/; puts $_ unless $1 =~ /[a-zA-Z]' \
     unverified.2_or_fewer_checksums.txt
 
 This finds the gem version and checks it for any alphabet character.  If it
