@@ -3,7 +3,7 @@ at least one third-party mirror or excluding gems that have been yanked.
 
 Gems that have been yanked are not installable with rubygems or bundler.
 
-Using rubygems_verify.rb 13689 gems were found with 2 or fewer checksums from
+Using rubygems_verify.rb 11798 gems were found with 2 or fewer checksums from
 third-party mirrors or caches, again excluding gems that have been yanked.
 
 These can be found in unverified.2_or_fewer_checksums.txt
