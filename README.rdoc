@@ -1,3 +1,5 @@
+= RubyGems Verification
+
 Using the SHA512 checksums supplied here, we have verified that all gems match
 at least one third-party mirror or excluding gems that have been yanked.
 
