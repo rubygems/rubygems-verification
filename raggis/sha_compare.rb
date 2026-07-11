@@ -8,6 +8,6 @@ db_sums = Hash[db_list.map! { |sum, n| n ? [File.basename(n), sum] : nil }.compa
 
 cf_sums.each do |name, sum|
   db_sum = db_sums[name]
-  next puts "Missing : #{name}" unless db_sum
+  next puts "Missing: #{name}" unless db_sum
   puts "Mismatch: #{name}" unless db_sum == sum
 end

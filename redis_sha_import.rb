@@ -2,7 +2,7 @@
 # Expects files in the format of "SHA  name.gem", uses File.basename on the
 # name, path is irrelevant.
 #
-#   ruby shas_to_redis_sadd.rb rubygems-sha512.name.txt > redis.name.txt
+#   ruby redis_sha_import.rb rubygems-sha512.name.txt > redis.name.txt
 #   redis-cli --pipe < redis.name.txt
 
 # Modified from http://redis.io/topics/mass-insert

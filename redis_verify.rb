@@ -57,7 +57,7 @@ imports = Dir['rubygems-sha512.*'].map do |file|
 
     Process.waitpid convert_pid
 
-    raise 'shas_to_redis_sadd.rb failed' unless $?.success?
+    raise 'redis_sha_import.rb failed' unless $?.success?
 
     Process.waitpid import_pid
 
