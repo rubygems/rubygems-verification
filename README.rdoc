@@ -1,5 +1,14 @@
 = RubyGems Verification
 
+*Historical archive.* This repository holds the checksum lists, throwaway
+comparison scripts, and gem status lists produced during the response to the
+January 2013 rubygems.org compromise. Its contents have been frozen since that
+time and are kept only as a historical record. It is not used for verifying
+gems today: current checksum verification is handled by RubyGems and Bundler
+themselves (the lockfile CHECKSUMS section, per-version SHA256 in the compact
+index, and checksum verification at gem install time). Do not treat the tools
+or data here as a current verification mechanism.
+
 Using the SHA512 checksums supplied here, we have verified that all gems match
 at least one third-party mirror or excluding gems that have been yanked.
 
